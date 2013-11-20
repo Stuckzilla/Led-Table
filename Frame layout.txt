@@ -1,0 +1,70 @@
+void thisisyourname()   //<--change "thisisyourname" to whatever you want your patterns name to be.
+{
+ 
+ 
+  static SequenceT thisisyourname;  //<--change "thisisyourname" to what you just put above.
+  static FrameT movinglineFrames[] = 
+  {
+    {
+      { 
+        B(11000000),    //<--This is your first frame, these 8 lines represent our board.
+        B(01100000),    //   The 0's are LED's that are off, the 1's are LED's that are on.
+        B(00110000),    //   Change the 1's and 0's to make a "frame" then move onto the next "frame".
+        B(00011000),
+        B(00001100),
+        B(00000110),
+        B(10000011),
+        B(11000001)
+      },
+      200		//<--This is the delay between frames in milliseconds, try to make all delays the same.
+    },
+    {
+      { 
+        B(01100000),
+        B(00110000),
+        B(00011000),
+        B(00001100),
+        B(00000110),
+        B(10000011),
+        B(11000001),
+        B(01100000)
+      },
+      200
+    },
+    {
+      { 
+        B(00110000),
+        B(00011000),
+        B(00001100),
+        B(00000110),
+        B(10000011),
+        B(11000001),
+        B(01100000),
+        B(00110000)
+      },
+      200
+    },
+    {			//<--Copy from here
+      { 
+        B(00011000),
+        B(00001100),
+        B(00000110),
+        B(10000011),
+        B(11000001),
+        B(01100000),
+        B(00110000),
+        B(00011000)
+      },
+      200
+    },			//<--To here, and paste directly underneath to make more frames.
+    
+  };
+  thisisyournameSequence.numberFrames = sizeof(thisisyournameFrames) / sizeof(FrameT); //Change thisisyourname 2x
+  thisisyournameSequence.frames = &thisisyournameFrames[0]; 			       //Change thisisyourname 2x
+
+#ifdef DEBUG
+  Serial.println("thisisyournameSequence");       //Change thisisyourname
+#endif  
+
+  PlaySequence( &(thisisyournameSequence), 10 );  //Change thisisyourname
+}
